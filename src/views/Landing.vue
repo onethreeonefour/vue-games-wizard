@@ -31,20 +31,39 @@
       <h1 className="underline-heading">Popular Releases</h1>
       <div className="landing-grid-container">
         <div
-          v-for="(el, index) in PopularReleases"
+          v-for="(el, index) in PopularReleases[0]"
           :key="index"
           class="landing-card"
         >
           <img v-bind:src="el.background_image" alt="popular" />
           <div>
+            <div
+              className="platform-span"
+              v-for="(span, index) in el.platforms"
+              :key="index"
+            >
+              <img :src="getImgUrl(span.platform.slug)" alt="platform" />
+            </div>
             <h2>{{ el.name }}</h2>
-            <h5 class="metacritic">
+            <h5
+              class="metacritic"
+              v-bind:style="[
+                el.metacritic > 75
+                  ? { backgroundColor: 'green' }
+                  : el.metacritic > 65
+                  ? { backgroundColor: 'orange' }
+                  : { backgroundColor: 'red' },
+              ]"
+            >
               {{ el.metacritic }}
             </h5>
             <h5>{{ el.released }}</h5>
           </div>
         </div>
       </div>
+    </div>
+    <div>
+      <Advert />
     </div>
   </template>
   <template v-else>
@@ -54,10 +73,14 @@
   </template>
 </template>
 <script>
-import { API_KEY } from "../../Config";
+import { API_KEY } from "../Config";
 import axios from "axios";
+import Advert from "../components/Landing/Advert";
 
 export default {
+  components: {
+    Advert,
+  },
   data() {
     return {
       Hero: [],
@@ -85,6 +108,9 @@ export default {
     getCurrentYear() {
       let year = new Date().getFullYear();
       return year;
+    },
+    getImgUrl(pic) {
+      return require("../assets/Icons/" + pic + ".png");
     },
   },
 
