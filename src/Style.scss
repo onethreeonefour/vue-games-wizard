@@ -7,15 +7,27 @@
 body {
 	background-color: rgb(240, 240, 240);
 }
+
 .loading-text {
 	justify-content: center;
 	align-items: center;
 }
 .underline-heading {
-	text-decoration: underline;
-	text-underline-offset: 0.5rem;
-	text-decoration-thickness: 4px;
-	text-decoration-color: rgb(221, 58, 58);
+	padding-bottom: 0.5rem;
+	position: relative;
+}
+.metacritic {
+	padding: 0.5rem;
+	color: white;
+	background-color: green;
+}
+.underline-heading:before {
+	content: "";
+	position: absolute;
+	width: 50px;
+	bottom: 0;
+	left: 0%;
+	border-bottom: 4px solid rgb(221, 58, 58);
 }
 .button {
 	background-color: rgb(251, 255, 255);
@@ -88,9 +100,7 @@ body {
 	gap: 2rem;
 	margin-top: 2rem;
 }
-.landing-card {
-	border-radius: 1rem;
-	color: black;
+.game-card {
 	transition: 0.2s all ease-in-out;
 	.platform-span {
 		display: inline;
@@ -103,6 +113,7 @@ body {
 	div {
 		padding: 2rem;
 		background-color: rgb(255, 255, 255);
+		height: 100px;
 		h2 {
 			padding: 0.5rem 0 0.5rem 0;
 		}
@@ -126,8 +137,11 @@ body {
 		object-fit: cover;
 		width: 100%;
 	}
+	a {
+		color: black;
+	}
 }
-.landing-card:hover {
+.game-card:hover {
 	transform: scale(1.0125);
 }
 //Advert
@@ -196,21 +210,22 @@ body {
 	}
 }
 .game-details {
-	display: flex;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
 	place-content: center;
 	width: 80%;
 	margin: auto;
 	padding: 4rem;
 	gap: 2rem;
+	h4 {
+		padding: 1rem 0 1rem 0;
+	}
 	.game-details-flex {
 		display: grid;
 		gap: 1rem;
-		margin-top: 1.5rem;
+
 		align-items: center;
 		grid-template-columns: repeat(2, 1fr);
-		h4 {
-			padding-bottom: 0.75rem;
-		}
 	}
 	.game-description {
 		margin-top: 2rem;
@@ -222,8 +237,42 @@ body {
 			padding-bottom: 1rem;
 		}
 	}
-	.video-container {
-		height: auto;
-		margin-top: 2rem;
+}
+.chip {
+	display: inline-flex;
+	background-color: black;
+	color: white;
+	border-radius: 5px;
+	padding: 0 0.5rem 0 0.5rem;
+	margin: 0.25rem 0.5rem 0.5rem 0;
+	text-align: center;
+}
+.video-container {
+	height: auto;
+	margin: 2rem 0 1rem 0;
+	video {
+		width: 100%;
+		border-radius: 5px;
 	}
+}
+.screenshots-container {
+	margin-top: 2rem;
+	display: grid;
+	gap: 2rem;
+	grid-template-columns: auto auto;
+	img {
+		width: 100%;
+		border-radius: 5px;
+	}
+}
+//suggested games container
+.suggested-games {
+	width: 90%;
+	margin: auto;
+}
+.suggested-grid-container {
+	margin-top: 2rem;
+	grid-template-columns: repeat(5, 1fr);
+	display: grid;
+	gap: 1rem;
 }

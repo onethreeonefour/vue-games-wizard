@@ -52,10 +52,39 @@
 						<span v-for="(el, index) in Game.publishers" v-bind:key="index">{{ el.name }}&ensp;</span>
 					</div>
 				</div>
+				<template v-if="Game.esrb_rating">
+					<div class="game-details-flex">
+						<div>
+							<h4>Age Rating</h4>
+							<span>{{ Game.esrb_rating.name }}</span>
+						</div>
+					</div>
+				</template>
+
+				<div>
+					<h4>Tags</h4>
+					<p v-for="(el, index) in Game.tags" v-bind:key="index" class="chip">{{ el.name }}&ensp;</p>
+				</div>
 			</div>
 			<div>
 				<h1 class="underline-heading">Media</h1>
-				<video :src="Game.clip.clip" autoplay controls muted loop class="video-container"></video>
+				<template v-if="Game.clip !== null">
+					<div class="video-container">
+						<video :src="Game.clip.clip" autoplay controls muted loop></video>
+					</div>
+				</template>
+				<template v-if="Screenshots.length > 0">
+					<div class="screenshots-container">
+						<div v-for="(el, index) in Screenshots.slice(0, 4)" :key="index">
+							<img v-bind:src="el.image" alt="screenshots" />
+						</div>
+					</div>
+				</template>
+			</div>
+		</div>
+		<div class="suggested-games">
+			<div>
+				<SuggestedGames :Suggested="Suggested" />
 			</div>
 		</div>
 	</template>
@@ -68,12 +97,17 @@
 
 <script>
 import axios from "axios";
+import SuggestedGames from "../components/GameDetails/SuggestedGames";
 export default {
 	data() {
 		return {
 			Game: {},
+			Screenshots: [],
+			Suggested: {},
 		};
 	},
+
+	components: { SuggestedGames },
 	computed: {
 		rating() {
 			let percent = 0;
@@ -92,16 +126,17 @@ export default {
 	},
 	mounted() {
 		axios(`https://api.rawg.io/api/games/${this.$route.params.id}`).then((res) => {
-			console.log(res);
+			//console.log(res);
 			this.Game = res.data;
+		});
+		axios(`https://api.rawg.io/api/games/${this.$route.params.id}/screenshots`).then((res) => {
+			//console.log(res);
+			this.Screenshots = res.data.results;
+		});
+		axios(`https://api.rawg.io/api/games/${this.$route.params.id}/suggested`).then((res) => {
+			console.log(res);
+			this.Suggested = res.data;
 		});
 	},
 };
 </script>
-
-<style lang="scss">
-.metacritic {
-	padding: 0.5rem;
-	color: white;
-}
-</style>

@@ -26,7 +26,7 @@
 		<div className="landing-container">
 			<h1 className="underline-heading">Popular Releases</h1>
 			<div className="landing-grid-container">
-				<div v-for="(el, index) in PopularReleases[0]" :key="index" class="landing-card">
+				<div v-for="(el, index) in PopularReleases[0]" :key="index" class="game-card">
 					<router-link :to="{ name: 'GameDetails', params: { id: el.id } }">
 						<img v-bind:src="el.background_image" alt="popular" />
 						<div>
@@ -115,7 +115,7 @@ export default {
 		axios(
 			`https://api.rawg.io/api/games?key=${API_KEY}&dates=${lastYear},${currentDate}&order=released&page_size=8`
 		).then((res) => {
-			console.log(res);
+			//console.log(res);
 			this.Hero.push(res.data.results[0]);
 			this.PopularReleases.push(res.data.results);
 		});
