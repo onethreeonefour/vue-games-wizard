@@ -26,7 +26,8 @@
 			<div className="landing-grid-container">
 				<div v-for="(el, index) in SearchResults" :key="index" class="game-card">
 					<a :href="$router.resolve({ name: 'GameDetails', params: { id: el.id } }).href">
-						<img v-bind:src="el.background_image" alt="popular" />
+						<img v-if="el.background_image" v-bind:src="el.background_image" alt="" />
+						<img v-else src="../assets/404.png" alt="popular" />
 						<div>
 							<h2>{{ el.name }}</h2>
 							<span
