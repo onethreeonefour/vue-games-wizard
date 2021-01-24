@@ -5,8 +5,8 @@
 			<a href="/">GAMES<strong>WIZARDS</strong></a>
 		</div>
 		<ul class="links">
-			<li><a href="#contact">Search</a></li>
 			<li><a href="#projects">Join</a></li>
+			<li><a href="#contact">Search</a></li>
 		</ul>
 		<label for="nav-toggle" class="icon-burger">
 			<div class="line"></div>

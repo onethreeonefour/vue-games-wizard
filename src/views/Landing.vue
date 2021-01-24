@@ -8,14 +8,15 @@
 		>
 			<div className="cta-container">
 				<h1>Games Wizards</h1>
-				<h2>All Things Videogames</h2>
+				<h2>The Most Complete Videogames Compendium</h2>
 				<form>
-					<label htmlFor="query">Search Our Database From Over 400,000+ Videogames!</label>
+					<label for="query">Search The Dungeon From Over 400,000+ Videogames!</label>
 					<input
 						type="text"
 						size="70"
 						placeholder="Search over 400,000 games for PC, Xbox, Playstation and classic games!"
 					/>
+					<button type="submit" @click="submit()">Search</button>
 				</form>
 			</div>
 			<div className="hero-details">
@@ -27,7 +28,7 @@
 			<h1 className="underline-heading">Popular Releases</h1>
 			<div className="landing-grid-container">
 				<div v-for="(el, index) in PopularReleases[0]" :key="index" class="game-card">
-					<router-link :to="{ name: 'GameDetails', params: { id: el.id } }">
+					<a :href="$router.resolve({ name: 'GameDetails', params: { id: el.id } }).href">
 						<img v-bind:src="el.background_image" alt="popular" />
 						<div>
 							<div className="platform-span" v-for="(span, index) in el.platforms" :key="index">
@@ -48,7 +49,7 @@
 							</h5>
 							<h5>{{ el.released }}</h5>
 						</div>
-					</router-link>
+					</a>
 				</div>
 			</div>
 		</div>
@@ -79,6 +80,10 @@ export default {
 	},
 
 	methods: {
+		submit() {
+			//if you want to send any data into server before redirection then you can do it here
+			this.$router.push("/search/" + "que");
+		},
 		getCurrentDay() {
 			let day = new Date().getDate();
 			if (day < 10) {

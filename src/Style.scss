@@ -71,6 +71,15 @@ body {
 			border-radius: 1rem;
 			margin-top: 10px;
 		}
+		button {
+			cursor: pointer;
+			margin-left: 0.5rem;
+			padding: 0.5rem 2rem 0.5rem 2rem;
+			background-color: black;
+			color: white;
+			border: 1px solid black;
+			border-radius: 5px;
+		}
 	}
 	.hero-details {
 		text-shadow: 2px 2px 1px black;
@@ -96,24 +105,20 @@ body {
 //Landing Popular Releases
 .landing-grid-container {
 	display: grid;
-	grid-template-columns: repeat(4, 1fr);
+	grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
 	gap: 2rem;
 	margin-top: 2rem;
 }
 .game-card {
 	transition: 0.2s all ease-in-out;
-	.platform-span {
-		display: inline;
-		padding: 0 10px 0 0;
-		img {
-			display: inline;
-			padding: 0;
-		}
-	}
+	display: flex;
+	flex-direction: column;
 	div {
 		padding: 2rem;
 		background-color: rgb(255, 255, 255);
-		height: 100px;
+		position: relative;
+		height: 90px;
+		place-content: center;
 		h2 {
 			padding: 0.5rem 0 0.5rem 0;
 		}
@@ -125,8 +130,21 @@ body {
 			width: auto;
 		}
 	}
+	.platform-span {
+		display: inline;
+		padding: 0 10px 0 0;
+		flex-direction: row;
+		img {
+			display: inline-block;
+			width: 20px;
+			height: auto;
+		}
+	}
 	.metacritic {
-		float: right;
+		position: absolute;
+		right: 5%;
+		bottom: 10%;
+		text-align: right;
 		font-size: large;
 		padding: 0.3rem;
 		color: white;
@@ -152,19 +170,13 @@ body {
 }
 .rawg-flex-container {
 	display: flex;
+	overflow: scroll;
 	justify-content: center;
 	align-items: center;
 	gap: 2rem;
 	margin-top: 3rem;
 }
 .rawg-card {
-	h1 {
-		padding-bottom: 1rem;
-	}
-
-	a {
-		margin: 1rem auto auto auto;
-	}
 	color: white;
 	background-color: rgb(221, 58, 58);
 	padding: 3rem;
@@ -173,6 +185,12 @@ body {
 	height: 300px;
 	place-content: center;
 	display: grid;
+	h1 {
+		padding-bottom: 1rem;
+	}
+	a {
+		margin: 1rem auto auto auto;
+	}
 }
 //Game-Details-Page
 
@@ -217,13 +235,15 @@ body {
 	margin: auto;
 	padding: 4rem;
 	gap: 2rem;
+	.game-details-info {
+		place-content: center;
+	}
 	h4 {
 		padding: 1rem 0 1rem 0;
 	}
 	.game-details-flex {
 		display: grid;
 		gap: 1rem;
-
 		align-items: center;
 		grid-template-columns: repeat(2, 1fr);
 	}
@@ -259,7 +279,7 @@ body {
 	margin-top: 2rem;
 	display: grid;
 	gap: 2rem;
-	grid-template-columns: auto auto;
+	grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
 	img {
 		width: 100%;
 		border-radius: 5px;
@@ -269,10 +289,14 @@ body {
 .suggested-games {
 	width: 90%;
 	margin: auto;
+	padding-bottom: 3rem;
 }
 .suggested-grid-container {
 	margin-top: 2rem;
-	grid-template-columns: repeat(5, 1fr);
+	grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
 	display: grid;
 	gap: 1rem;
+}
+
+@media only screen and (max-width: 1024px) {
 }

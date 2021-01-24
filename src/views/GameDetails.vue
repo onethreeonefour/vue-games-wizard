@@ -17,7 +17,7 @@
 			</div>
 		</div>
 		<div class="game-details">
-			<div>
+			<div class="game-details-info">
 				<h1 class="underline-heading">About</h1>
 				<div v-html="Game.description" class="game-description"></div>
 				<hr />
@@ -29,6 +29,7 @@
 					<div>
 						<h4>Metascore</h4>
 						<span
+							v-if="Game.metacritic !== null"
 							class="metacritic"
 							v-bind:style="[
 								Game.metacritic > 75
@@ -40,6 +41,7 @@
 						>
 							{{ Game.metacritic }}
 						</span>
+						<span v-else class="metacritic">NA</span>
 					</div>
 				</div>
 				<div class="game-details-flex">
@@ -72,14 +74,20 @@
 					<div class="video-container">
 						<video :src="Game.clip.clip" autoplay controls muted loop></video>
 					</div>
-				</template>
-				<template v-if="Screenshots.length > 0">
 					<div class="screenshots-container">
-						<div v-for="(el, index) in Screenshots.slice(0, 4)" :key="index">
+						<div v-for="(el, index) in Screenshots.slice(0, 1)" :key="index">
 							<img v-bind:src="el.image" alt="screenshots" />
 						</div>
 					</div>
 				</template>
+				<template v-else>
+					<div class="screenshots-container">
+						<div v-for="(el, index) in Screenshots.slice(0, 2)" :key="index">
+							<img v-bind:src="el.image" alt="screenshots" />
+						</div>
+					</div>
+				</template>
+				<template v-if="Screenshots.length > 0"> </template>
 			</div>
 		</div>
 		<div class="suggested-games">
@@ -126,7 +134,7 @@ export default {
 	},
 	mounted() {
 		axios(`https://api.rawg.io/api/games/${this.$route.params.id}`).then((res) => {
-			//console.log(res);
+			console.log(res);
 			this.Game = res.data;
 		});
 		axios(`https://api.rawg.io/api/games/${this.$route.params.id}/screenshots`).then((res) => {
@@ -134,7 +142,7 @@ export default {
 			this.Screenshots = res.data.results;
 		});
 		axios(`https://api.rawg.io/api/games/${this.$route.params.id}/suggested`).then((res) => {
-			console.log(res);
+			//console.log(res);
 			this.Suggested = res.data;
 		});
 	},
