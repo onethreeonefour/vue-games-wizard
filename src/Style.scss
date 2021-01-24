@@ -21,7 +21,7 @@ body {
 		width: 1rem;
 		height: 1rem;
 		margin: 2rem 0.3rem;
-		background: $red;
+		background: rgb(133, 133, 133);
 		border-radius: 50%;
 		animation: 0.9s bounce infinite alternate;
 
@@ -211,7 +211,7 @@ body {
 }
 .rawg-card {
 	color: white;
-	background-color: rgb(221, 58, 58);
+	background-color: #1b1b1b;
 	padding: 3rem;
 	border-radius: 7.5px;
 	height: 300px;
