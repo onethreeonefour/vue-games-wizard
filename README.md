@@ -1,24 +1,9 @@
-# games-wizard
+# Games-Wizard
 
-## Project setup
-```
-npm install
-```
+## Videogames Database VueJS Web Application
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+Using RAWG.IO API for data and all custom css/sass for overall look and feel.
 
-### Compiles and minifies for production
-```
-npm run build
-```
+Run npm install and provide your own API key from RAWG.io inside .env (you must make one in your own environment)
 
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+My first VueJS application from learning ReactJS. Overall much quicker to build with learning new css attribute along the way.

@@ -138,7 +138,7 @@ export default {
 	},
 	mounted() {
 		axios(`https://api.rawg.io/api/games/${this.$route.params.id}`).then((res) => {
-			console.log(res);
+			//console.log(res);
 			this.Game = res.data;
 		});
 		axios(`https://api.rawg.io/api/games/${this.$route.params.id}/screenshots`).then((res) => {

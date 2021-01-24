@@ -71,14 +71,14 @@ export default {
 		submit() {
 			//if you want to send any data into server before redirection then you can do it here
 			axios(`https://api.rawg.io/api/games?key=${API_KEY}&search=${this.Query}`).then((res) => {
-				console.log(res);
+				//console.log(res);
 				this.SearchResults = res.data.results;
 			});
 		},
 	},
 	mounted() {
 		axios(`https://api.rawg.io/api/games?key=${API_KEY}&search=${this.$route.params.query}`).then((res) => {
-			console.log(res);
+			//console.log(res);
 			this.SearchResults = res.data.results;
 		});
 	},
