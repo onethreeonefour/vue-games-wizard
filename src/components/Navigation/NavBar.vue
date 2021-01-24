@@ -43,7 +43,7 @@ nav {
 	left: 0;
 	right: 0;
 	top: 0;
-	padding: 0 5%;
+	padding: 0 2.5%;
 	height: 100px;
 	background-color: rgba(0, 0, 0, 0.5);
 	color: white;

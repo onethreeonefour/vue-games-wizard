@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Landing from "../views/Landing";
 import GameDetails from "../views/GameDetails";
-import Search from "../views/Search";
+import SearchResult from "../views/SearchResult";
 
 const routes = [
 	{
@@ -17,9 +17,9 @@ const routes = [
 	},
 	{
 		path: "/search/:query",
-		name: "Search",
+		name: "SearchResult",
 		props: true,
-		component: Search,
+		component: SearchResult,
 	},
 ];
 

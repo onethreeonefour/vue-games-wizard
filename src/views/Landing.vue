@@ -12,6 +12,7 @@
 				<form>
 					<label for="query">Search The Dungeon From Over 400,000+ Videogames!</label>
 					<input
+						v-model="Query"
 						type="text"
 						size="70"
 						placeholder="Search over 400,000 games for PC, Xbox, Playstation and classic games!"
@@ -76,13 +77,14 @@ export default {
 		return {
 			Hero: [],
 			PopularReleases: [],
+			Query: "",
 		};
 	},
 
 	methods: {
 		submit() {
 			//if you want to send any data into server before redirection then you can do it here
-			this.$router.push("/search/" + "que");
+			this.$router.push("/search/" + this.Query);
 		},
 		getCurrentDay() {
 			let day = new Date().getDate();
