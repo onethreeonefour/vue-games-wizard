@@ -98,7 +98,11 @@
 	</template>
 	<template v-else>
 		<div class="hero-container loading-text">
-			<h1>Games Wizards - Loading...</h1>
+			<div class="loading">
+				<div></div>
+				<div></div>
+				<div></div>
+			</div>
 		</div>
 	</template>
 </template>

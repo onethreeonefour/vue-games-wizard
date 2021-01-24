@@ -5,8 +5,8 @@
 			<a href="/">GAMES<strong>WIZARDS</strong></a>
 		</div>
 		<ul class="links">
-			<li><a href="#projects">Join</a></li>
-			<li><a href="#contact">Search</a></li>
+			<li><a href="https://rawg.io/signup">Sign Up</a></li>
+			<li><a href="/search/&ensp;">Search</a></li>
 		</ul>
 		<label for="nav-toggle" class="icon-burger">
 			<div class="line"></div>
@@ -114,7 +114,7 @@ nav .icon-burger .line {
 		height: auto;
 		flex-direction: column;
 		justify-content: space-evenly;
-		background-color: rgba(0, 0, 0, 0.1);
+		background-color: rgba(0, 0, 0, 0.95);
 		overflow: hidden;
 		box-sizing: border-box;
 		transition: all 0.5s ease-in-out;

@@ -9,15 +9,16 @@
 			<div className="cta-container">
 				<h1>Games Wizards</h1>
 				<h2>The Most Complete Videogames Compendium</h2>
-				<form>
+				<form @submit="submit()" method="post">
 					<label for="query">Search The Dungeon From Over 400,000+ Videogames!</label>
 					<input
+						required
 						v-model="Query"
 						type="text"
 						size="70"
 						placeholder="Search over 400,000 games for PC, Xbox, Playstation and classic games!"
 					/>
-					<button type="submit" @click="submit()">Search</button>
+					<button type="submit">Search</button>
 				</form>
 			</div>
 			<div className="hero-details">
@@ -60,7 +61,11 @@
 	</template>
 	<template v-else>
 		<div className="hero-container loading-text">
-			<h1>Games Wizards - Loading...</h1>
+			<div class="loading">
+				<div></div>
+				<div></div>
+				<div></div>
+			</div>
 		</div>
 	</template>
 </template>
